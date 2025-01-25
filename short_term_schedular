@@ -1,0 +1,44 @@
+int processes_in_ready_queue(int step) {
+    
+    return (step % MAX_READY_QUEUE_SIZE) + 1; 
+}
+
+float calculate_n(float process_time, float total_execution_time) {
+    return process_time / total_execution_time;
+}
+
+int get_last_digit() {
+    return ROLL_NO[strlen(ROLL_NO) - 1] - '0';
+}
+
+int main() {
+    float total_execution_time = 100;
+    float process_A_time = 3;
+    float process_B_time = 4;
+
+    for (int step = 1; step <= 5; step++) {
+        int num_processes = processes_in_ready_queue(step);
+
+        printf("Step %d - Number of processes in the ready queue: %d\n", step, num_processes);
+
+        
+        for (int process_id = 1; process_id <= num_processes; process_id++) {
+            change_process_context(process_id, "RUNNING");
+
+            change_process_context(process_id, "READY");
+        }
+
+        float n_process_A = calculate_n(process_A_time, total_execution_time);
+        float n_process_B = calculate_n(process_B_time, total_execution_time);
+
+        int d = get_last_digit();
+
+        float quantum_process_A = pow(ALPHA, (n_process_A + d));
+        float quantum_process_B = pow(ALPHA, (n_process_B + d));
+
+        printf("Step %d - Time quantum for Process A: %.2f\n", step, quantum_process_A);
+        printf("Step %d - Time quantum for Process B: %.2f\n\n", step, quantum_process_B);
+    }
+
+    return 0;
+}
