@@ -1,6 +1,3 @@
-
-Here’s a README.md file tailored for your Short-Term Scheduler project:
-
 Short-Term Scheduler for Operating Systems
 This project simulates a short-term scheduler for an operating system. The scheduler determines the time quantum for processes in the ready queue based on dynamic calculations. It also simulates context switching between processes to demonstrate how CPU scheduling operates in real-world systems.
 
